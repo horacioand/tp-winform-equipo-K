@@ -20,9 +20,9 @@ namespace Dominio
         public int CodigoArticulo { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public string Marca { get; set; }
-        public string Categoría { get; set; }
-        public string Imagen { get; set; }
+        public Marca Marca { get; set; }
+        public Categoria Categoría { get; set; }
+        public List<Imagen> Imagen { get; set; }
         public float Precio { get; set; }
     }
 }
