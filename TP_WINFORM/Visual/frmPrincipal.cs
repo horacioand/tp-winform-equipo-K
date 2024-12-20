@@ -16,5 +16,10 @@ namespace Visual
         {
             InitializeComponent();
         }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            Ar
+        }
     }
 }
