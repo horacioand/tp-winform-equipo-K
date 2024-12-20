@@ -15,7 +15,7 @@ namespace Negocio
             List<Articulo> listaArticulos = new List<Articulo>();
             try
             {
-                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, C.Descripcion AS Categoria, M.Descripcion AS Marca FROM ARTICULOS A, CATEGORIAS C, MARCAS M WHERE IdMarca = M.Id AND IdCategoria = C.Id");
+                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, C.Descripcion AS Categoria, M.Descripcion AS Marca, Precio FROM ARTICULOS A, CATEGORIAS C, MARCAS M WHERE IdMarca = M.Id AND IdCategoria = C.Id");
                 datos.ejecutarLectura();
                 while (datos.Reader.Read())
                 {
@@ -27,6 +27,7 @@ namespace Negocio
                     auxiliar.Categoria.Descripcion = (string)datos.Reader["Categoria"];
                     auxiliar.Marca = new Marca();
                     auxiliar.Marca.Descripcion = (string)datos.Reader["Marca"];
+                    auxiliar.Precio = (decimal)datos.Reader["Precio"];
                     listaArticulos.Add(auxiliar);
                 }
                 return listaArticulos;
