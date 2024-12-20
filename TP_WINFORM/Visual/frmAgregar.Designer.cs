@@ -145,6 +145,7 @@
             // 
             // cboCategoria
             // 
+            this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(116, 171);
             this.cboCategoria.Name = "cboCategoria";
@@ -153,6 +154,7 @@
             // 
             // cboMarca
             // 
+            this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
             this.cboMarca.Location = new System.Drawing.Point(116, 198);
             this.cboMarca.Name = "cboMarca";
@@ -210,6 +212,7 @@
             this.Controls.Add(this.lblAgregarArticulo);
             this.Name = "frmAgregar";
             this.Text = "frmAgregar";
+            this.Load += new System.EventHandler(this.frmAgregar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

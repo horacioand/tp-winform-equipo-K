@@ -8,5 +8,28 @@ namespace Negocio
 {
     public class CategoriaNegocio
     {
+        public List<Categoria> listar()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Categoria> listaCategoria = new List<Categoria>();
+            try
+            {
+                datos.setearConsulta("SELECT Id, Descripcion FROM CATEGORIAS");
+                datos.ejecutarLectura();
+                while (datos.Reader.Read()) 
+                {
+                    Categoria auxiliar = new Categoria();
+                    auxiliar.Id = (int)datos.Reader["Id"];
+                    auxiliar.Descripcion = (string)datos.Reader["Descripcion"];
+                    listaCategoria.Add(auxiliar);
+                }
+                return listaCategoria;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
