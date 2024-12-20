@@ -20,7 +20,7 @@ namespace Negocio
                 while (datos.Reader.Read())
                 {
                     Articulo auxiliar = new Articulo();
-                    auxiliar.CodigoArticulo = (int)datos.Reader["Codigo"];
+                    auxiliar.CodigoArticulo = (string)datos.Reader["Codigo"];
                     auxiliar.Nombre = (string)datos.Reader["Nombre"];
                     auxiliar.Descripcion = (string)datos.Reader["Descripcion"];
                     auxiliar.Categoria = new Categoria();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Dominio;
 namespace Visual
 {
     public partial class frmPrincipal : Form
@@ -19,7 +20,9 @@ namespace Visual
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            Ar
+            ArticuloNegocio conexionArticulo = new ArticuloNegocio();
+            List<Articulo> listaArticulos = conexionArticulo.listar();
+            dgvArticulos.DataSource = listaArticulos;   
         }
     }
 }
