@@ -30,5 +30,10 @@ namespace Visual
             frmAgregar frmAgregar = new frmAgregar();
             frmAgregar.ShowDialog();
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
