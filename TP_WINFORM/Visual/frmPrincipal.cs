@@ -24,5 +24,11 @@ namespace Visual
             List<Articulo> listaArticulos = conexionArticulo.listar();
             dgvArticulos.DataSource = listaArticulos;   
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAgregar frmAgregar = new frmAgregar();
+            frmAgregar.ShowDialog();
+        }
     }
 }
