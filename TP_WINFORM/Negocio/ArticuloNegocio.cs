@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,30 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void agregar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion,IdMarca,IdCategoria) VALUES ('"+articulo.CodigoArticulo+"','"+articulo.Nombre+"','"+articulo.Descripcion+"',@idMarca,@idCategoria)");
+                datos.setearParametro("@idMarca",articulo.Marca.Id);
+                datos.setearParametro("@idCategoria",articulo.Categoria.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }

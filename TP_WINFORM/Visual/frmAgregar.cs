@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Dominio;
 namespace Visual
 {
     public partial class frmAgregar : Form
@@ -36,6 +36,27 @@ namespace Visual
             {
 
                 throw;
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Articulo nuevoArticulo = new Articulo();
+                ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                nuevoArticulo.CodigoArticulo = txtCodigo.Text;
+                nuevoArticulo.Nombre = txtNombre.Text;
+                nuevoArticulo.Descripcion = txtDescripcion.Text;
+                nuevoArticulo.Marca = (Marca)cboMarca.SelectedItem;
+                nuevoArticulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articuloNegocio.agregar(nuevoArticulo);
+                MessageBox.Show("Agregado Exitosamente");
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
     }
