@@ -72,5 +72,13 @@ namespace Visual
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado = dgvArticulos.CurrentRow.DataBoundItem as Articulo;
+            frmDetalles detalles = new frmDetalles(seleccionado);
+            detalles.ShowDialog();
+
+        }
     }
 }

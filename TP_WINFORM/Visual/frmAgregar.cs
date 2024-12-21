@@ -23,6 +23,7 @@ namespace Visual
             this.articulo = articulo;
             InitializeComponent();
             Text = "Modificar Articulo";
+            lblAgregarArticulo.Text = "Modificar Articulo";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
