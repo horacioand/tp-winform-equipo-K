@@ -16,7 +16,7 @@ namespace Negocio
             List<Articulo> listaArticulos = new List<Articulo>();
             try
             {
-                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, C.Descripcion AS Categoria, M.Descripcion AS Marca, Precio FROM ARTICULOS A, CATEGORIAS C, MARCAS M WHERE IdMarca = M.Id AND IdCategoria = C.Id");
+                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, C.Descripcion AS Categoria, M.Descripcion AS Marca, Precio, C.Id AS idCategoria, M.Id AS idMarca FROM ARTICULOS A, CATEGORIAS C, MARCAS M WHERE IdMarca = M.Id AND IdCategoria = C.Id");
                 datos.ejecutarLectura();
                 while (datos.Reader.Read())
                 {
@@ -28,16 +28,23 @@ namespace Negocio
                         auxiliar.Nombre = (string)datos.Reader["Nombre"];
                     if (!(datos.Reader["Descripcion"] is DBNull))
                         auxiliar.Descripcion = (string)datos.Reader["Descripcion"];
+
+                    auxiliar.Categoria = new Categoria();
                     if (!(datos.Reader["Categoria"] is DBNull))
                     {
-                        auxiliar.Categoria = new Categoria();
                         auxiliar.Categoria.Descripcion = (string)datos.Reader["Categoria"];
                     }
-                    if (!(datos.Reader["Marca"] is DBNull))
-                    {
+                    if (!(datos.Reader["idCategoria"] is DBNull))
+                        auxiliar.Categoria.Id = (int)datos.Reader["idCategoria"];
+
                         auxiliar.Marca = new Marca();
+                    if (!(datos.Reader["Marca"] is DBNull))
+                    { 
                         auxiliar.Marca.Descripcion = (string)datos.Reader["Marca"];
                     }
+                    if (!(datos.Reader["idMarca"] is DBNull))
+                        auxiliar.Marca.Id = (int)datos.Reader["idMarca"];
+
                     if (!(datos.Reader["Precio"] is DBNull))
                         auxiliar.Precio = (decimal)datos.Reader["Precio"];
                     listaArticulos.Add(auxiliar);

@@ -64,12 +64,6 @@
     <Compile Include="frmDetalles.Designer.cs">
       <DependentUpon>frmDetalles.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmModificar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmModificar.Designer.cs">
-      <DependentUpon>frmModificar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAgregar.resx">

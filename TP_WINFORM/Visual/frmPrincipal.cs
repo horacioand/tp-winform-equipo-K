@@ -35,5 +35,12 @@ namespace Visual
         {
             Close();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmAgregar modificar = new frmAgregar(seleccionado);    
+            modificar.ShowDialog();
+        }
     }
 }

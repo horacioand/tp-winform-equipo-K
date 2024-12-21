@@ -13,8 +13,14 @@ namespace Visual
 {
     public partial class frmAgregar : Form
     {
+        private Articulo articulo = null;
         public frmAgregar()
         {
+            InitializeComponent();
+        }
+        public frmAgregar(Articulo articulo)
+        {
+            this.articulo = articulo;
             InitializeComponent();
         }
 
@@ -25,12 +31,28 @@ namespace Visual
 
         private void frmAgregar_Load(object sender, EventArgs e)
         {
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
             try
             {
-                CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-                MarcaNegocio marcaNegocio = new MarcaNegocio();
                 cboCategoria.DataSource = categoriaNegocio.listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
                 cboMarca.DataSource = marcaNegocio.listar();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
+
+                if (articulo != null) 
+                {
+                    //falta img
+                    txtId.Text = articulo.Id.ToString();
+                    txtCodigo.Text = articulo.CodigoArticulo;
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    cboCategoria.SelectedValue = articulo.Categoria.Id;
+                    cboMarca.SelectedValue = articulo.Marca.Id;
+                    txtPrecio.Text = articulo.Precio.ToString();
+                }
             }
             catch (Exception)
             {
