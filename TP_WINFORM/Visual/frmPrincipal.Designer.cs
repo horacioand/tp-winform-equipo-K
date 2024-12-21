@@ -33,6 +33,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnDetalles = new System.Windows.Forms.Button();
+            this.btnEliminarF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,11 +87,22 @@
             this.btnDetalles.Text = "Detalles";
             this.btnDetalles.UseVisualStyleBackColor = true;
             // 
+            // btnEliminarF
+            // 
+            this.btnEliminarF.Location = new System.Drawing.Point(255, 346);
+            this.btnEliminarF.Name = "btnEliminarF";
+            this.btnEliminarF.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarF.TabIndex = 5;
+            this.btnEliminarF.Text = "Eliminar";
+            this.btnEliminarF.UseVisualStyleBackColor = true;
+            this.btnEliminarF.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 381);
+            this.Controls.Add(this.btnEliminarF);
             this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
@@ -111,6 +123,7 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnDetalles;
+        private System.Windows.Forms.Button btnEliminarF;
     }
 }
 

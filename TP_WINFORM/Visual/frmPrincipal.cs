@@ -50,5 +50,27 @@ namespace Visual
             dgvArticulos.DataSource = listaArticulos;
             dgvArticulos.Columns[0].Visible = false;
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Seguro?", "Eliminacion Física", MessageBoxButtons.YesNo, MessageBoxIcon.Question );
+                if(respuesta == DialogResult.Yes)
+                {
+                    Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    articuloNegocio.eliminarArticulo(seleccionado.Id);
+                    cargar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
