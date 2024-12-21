@@ -19,8 +19,10 @@ namespace Negocio
                 while (datos.Reader.Read()) 
                 {
                     Categoria auxiliar = new Categoria();
-                    auxiliar.Id = (int)datos.Reader["Id"];
-                    auxiliar.Descripcion = (string)datos.Reader["Descripcion"];
+                    if (!(datos.Reader["Id"] is DBNull))
+                        auxiliar.Id = (int)datos.Reader["Id"];
+                    if (!(datos.Reader["Descripcion"] is DBNull))
+                        auxiliar.Descripcion = (string)datos.Reader["Descripcion"];
                     listaCategoria.Add(auxiliar);
                 }
                 return listaCategoria;

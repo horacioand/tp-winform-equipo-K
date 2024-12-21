@@ -21,14 +21,25 @@ namespace Negocio
                 while (datos.Reader.Read())
                 {
                     Articulo auxiliar = new Articulo();
-                    auxiliar.CodigoArticulo = (string)datos.Reader["Codigo"];
-                    auxiliar.Nombre = (string)datos.Reader["Nombre"];
-                    auxiliar.Descripcion = (string)datos.Reader["Descripcion"];
-                    auxiliar.Categoria = new Categoria();
-                    auxiliar.Categoria.Descripcion = (string)datos.Reader["Categoria"];
-                    auxiliar.Marca = new Marca();
-                    auxiliar.Marca.Descripcion = (string)datos.Reader["Marca"];
-                    auxiliar.Precio = (decimal)datos.Reader["Precio"];
+                    auxiliar.Id = (int)datos.Reader["Id"];
+                    if (!(datos.Reader["Codigo"]is DBNull))
+                        auxiliar.CodigoArticulo = (string)datos.Reader["Codigo"];
+                    if (!(datos.Reader["Nombre"] is DBNull))
+                        auxiliar.Nombre = (string)datos.Reader["Nombre"];
+                    if (!(datos.Reader["Descripcion"] is DBNull))
+                        auxiliar.Descripcion = (string)datos.Reader["Descripcion"];
+                    if (!(datos.Reader["Categoria"] is DBNull))
+                    {
+                        auxiliar.Categoria = new Categoria();
+                        auxiliar.Categoria.Descripcion = (string)datos.Reader["Categoria"];
+                    }
+                    if (!(datos.Reader["Marca"] is DBNull))
+                    {
+                        auxiliar.Marca = new Marca();
+                        auxiliar.Marca.Descripcion = (string)datos.Reader["Marca"];
+                    }
+                    if (!(datos.Reader["Precio"] is DBNull))
+                        auxiliar.Precio = (decimal)datos.Reader["Precio"];
                     listaArticulos.Add(auxiliar);
                 }
                 return listaArticulos;
@@ -47,15 +58,15 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion,IdMarca,IdCategoria) VALUES ('"+articulo.CodigoArticulo+"','"+articulo.Nombre+"','"+articulo.Descripcion+"',@idMarca,@idCategoria)");
+                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion,IdMarca,IdCategoria,Precio) VALUES ('"+articulo.CodigoArticulo+"','"+articulo.Nombre+"','"+articulo.Descripcion+"',@idMarca,@idCategoria,"+articulo.Precio+")");
                 datos.setearParametro("@idMarca",articulo.Marca.Id);
                 datos.setearParametro("@idCategoria",articulo.Categoria.Id);
                 datos.ejecutarAccion();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
             finally
             {

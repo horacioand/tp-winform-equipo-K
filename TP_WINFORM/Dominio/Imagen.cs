@@ -9,6 +9,6 @@ namespace Dominio
     public class Imagen
     {
         public int Id { get; set; }
-        public int Ruta { get; set; }
+        public string Ruta { get; set; }
     }
 }

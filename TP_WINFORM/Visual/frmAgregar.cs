@@ -45,12 +45,19 @@ namespace Visual
             {
                 Articulo nuevoArticulo = new Articulo();
                 ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+
                 nuevoArticulo.CodigoArticulo = txtCodigo.Text;
                 nuevoArticulo.Nombre = txtNombre.Text;
                 nuevoArticulo.Descripcion = txtDescripcion.Text;
+                nuevoArticulo.Imagen = new List<Imagen>();
+                nuevoArticulo.Imagen.Add(new Imagen());
+                nuevoArticulo.Id = int.Parse(txtId.Text);
+                nuevoArticulo.Imagen[0].Ruta = txtImagen.Text;
                 nuevoArticulo.Marca = (Marca)cboMarca.SelectedItem;
                 nuevoArticulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articuloNegocio.agregar(nuevoArticulo);
+                imagenNegocio.agregar(nuevoArticulo);
                 MessageBox.Show("Agregado Exitosamente");
                 Close();
             }
@@ -58,6 +65,23 @@ namespace Visual
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        public void cargarImagen(string imagen)
+        {
+
+            try
+            {
+                pboArticulo.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pboArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9cSGzVkaZvJD5722MU5A-JJt_T5JMZzotcw&s");
+            }
+        }
+
+        private void txtImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtImagen.Text);
         }
     }
 }
