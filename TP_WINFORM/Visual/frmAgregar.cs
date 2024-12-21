@@ -22,6 +22,7 @@ namespace Visual
         {
             this.articulo = articulo;
             InitializeComponent();
+            Text = "Modificar Articulo";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -45,7 +46,7 @@ namespace Visual
                 if (articulo != null) 
                 {
                     //falta img
-                    txtId.Text = articulo.Id.ToString();
+
                     txtCodigo.Text = articulo.CodigoArticulo;
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
@@ -63,25 +64,39 @@ namespace Visual
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
             try
             {
-                Articulo nuevoArticulo = new Articulo();
-                ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-                ImagenNegocio imagenNegocio = new ImagenNegocio();
+                if (articulo == null)
+                {
+                    articulo = new Articulo();
+                }
 
-                nuevoArticulo.CodigoArticulo = txtCodigo.Text;
-                nuevoArticulo.Nombre = txtNombre.Text;
-                nuevoArticulo.Descripcion = txtDescripcion.Text;
-                nuevoArticulo.Imagen = new List<Imagen>();
-                nuevoArticulo.Imagen.Add(new Imagen());
-                nuevoArticulo.Id = int.Parse(txtId.Text);
-                nuevoArticulo.Imagen[0].Ruta = txtImagen.Text;
-                nuevoArticulo.Marca = (Marca)cboMarca.SelectedItem;
-                nuevoArticulo.Categoria = (Categoria)cboCategoria.SelectedItem;
-                articuloNegocio.agregar(nuevoArticulo);
-                imagenNegocio.agregar(nuevoArticulo);
-                MessageBox.Show("Agregado Exitosamente");
+                articulo.CodigoArticulo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.Imagen = new List<Imagen>();
+                articulo.Imagen.Add(new Imagen());
+                articulo.Imagen[0].Ruta = txtImagen.Text;
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+
+                if (articulo.Id != 0)
+                {
+                    articuloNegocio.modificar(articulo);
+                    
+                    MessageBox.Show("Modificado Exitosamente");
+                }
+                else
+                {
+                    articuloNegocio.agregar(articulo);
+                    imagenNegocio.agregar(articulo);
+                    MessageBox.Show("Agregado Exitosamente");
+                }
+
                 Close();
+                
             }
             catch (Exception ex)
             {

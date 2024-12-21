@@ -20,15 +20,14 @@ namespace Visual
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio conexionArticulo = new ArticuloNegocio();
-            List<Articulo> listaArticulos = conexionArticulo.listar();
-            dgvArticulos.DataSource = listaArticulos;   
+            cargar();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAgregar frmAgregar = new frmAgregar();
             frmAgregar.ShowDialog();
+            cargar();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -41,6 +40,15 @@ namespace Visual
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmAgregar modificar = new frmAgregar(seleccionado);    
             modificar.ShowDialog();
+            cargar();
+        }
+
+        public void cargar()
+        {
+            ArticuloNegocio conexionArticulo = new ArticuloNegocio();
+            List<Articulo> listaArticulos = conexionArticulo.listar();
+            dgvArticulos.DataSource = listaArticulos;
+            dgvArticulos.Columns[0].Visible = false;
         }
     }
 }

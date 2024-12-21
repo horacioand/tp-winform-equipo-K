@@ -80,5 +80,30 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE ARTICULOS SET Codigo = @cod, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria =@idCat, Precio =@Precio WHERE Id = @Id");
+                datos.setearParametro("@cod",articulo.CodigoArticulo);
+                datos.setearParametro("@nombre", articulo.Nombre);
+                datos.setearParametro("@descripcion",articulo.Descripcion);
+                datos.setearParametro("@idMarca",articulo.Marca.Id);
+                datos.setearParametro("@idCat",articulo.Categoria.Id);
+                datos.setearParametro("@Precio",articulo.Precio);
+                datos.setearParametro("@Id", articulo.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion(); 
+            }
+        }
     }
 }
