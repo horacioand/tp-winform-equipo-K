@@ -46,8 +46,11 @@ namespace Visual
 
                 if (articulo != null) 
                 {
-                    //falta img
-
+                    if(articulo.Imagen.Count > 0)
+                    {
+                        txtImagen.Text = articulo.Imagen[0].Ruta;
+                        Funciones.cargarImagen(pboArticulo,txtImagen.Text);
+                    }
                     txtCodigo.Text = articulo.CodigoArticulo;
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
@@ -69,6 +72,10 @@ namespace Visual
             ImagenNegocio imagenNegocio = new ImagenNegocio();
             try
             {
+                if (Funciones.validarIngreso(txtCodigo,txtNombre,txtPrecio))
+                {
+                    return;
+                }
                 if (articulo == null)
                 {
                     articulo = new Articulo();
@@ -102,22 +109,9 @@ namespace Visual
                 MessageBox.Show(ex.ToString());
             }
         }
-        public void cargarImagen(string imagen)
-        {
-
-            try
-            {
-                pboArticulo.Load(imagen);
-            }
-            catch (Exception)
-            {
-                pboArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9cSGzVkaZvJD5722MU5A-JJt_T5JMZzotcw&s");
-            }
-        }
-
         private void txtImagen_Leave(object sender, EventArgs e)
         {
-            cargarImagen(txtImagen.Text);
+            Funciones.cargarImagen(pboArticulo, txtImagen.Text);
         }
     }
 }

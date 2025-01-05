@@ -64,6 +64,7 @@
     <Compile Include="frmDetalles.Designer.cs">
       <DependentUpon>frmDetalles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Funciones.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAgregar.resx">
