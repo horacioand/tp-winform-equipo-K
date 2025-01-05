@@ -8,24 +8,62 @@ namespace Negocio
 {
     public class ImagenNegocio
     {
-        public List<Imagen> listar()
+        public List<Imagen> listarImg(int id)
         {
-            return new List<Imagen>();
-            //terminar 
+            List<Imagen> listaImagenes = new List<Imagen>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT Id, ImagenUrl FROM IMAGENES WHERE IdArticulo = " + id);
+                datos.ejecutarLectura();
+                while(datos.Reader.Read())
+                {
+                    Imagen aux = new Imagen();
+                    aux.Id = (int)datos.Reader["Id"];
+                    aux.Ruta = (string)datos.Reader["ImagenUrl"];
+                    listaImagenes.Add(aux);
+                }
+                return listaImagenes;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
-        public void agregar(Articulo articulo)
+        public void EliminarImagen(int id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @Url)");
-                datos.setearParametro("@idArticulo", articulo.Id);
-                datos.setearParametro("@Url", articulo.Imagen[0].Ruta);
+                datos.setearConsulta("DELETE FROM IMAGENES WHERE id = @id");
+                datos.setearParametro("@id", id);
+
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        public void AgregarImg(int idArt, string img)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArt, @Ruta)");
+                datos.setearParametro("@IdArt", idArt);
+                datos.setearParametro("@Ruta", img);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally

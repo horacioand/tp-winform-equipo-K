@@ -23,24 +23,9 @@ namespace Visual
             cargar();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            frmAgregar frmAgregar = new frmAgregar();
-            frmAgregar.ShowDialog();
-            cargar();
-        }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmAgregar modificar = new frmAgregar(seleccionado);    
-            modificar.ShowDialog();
-            cargar();
         }
 
         public void cargar()
@@ -79,6 +64,22 @@ namespace Visual
             frmDetalles detalles = new frmDetalles(seleccionado);
             detalles.ShowDialog();
 
+        }
+
+
+        private void btnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            frmAgregar frmAgregar = new frmAgregar();
+            frmAgregar.ShowDialog();
+            cargar();
+        }
+
+        private void btnModificarArticulo_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmAgregar modificar = new frmAgregar(seleccionado);
+            modificar.ShowDialog();
+            cargar();
         }
     }
 }

@@ -43,6 +43,9 @@
             this.txtCategoria = new System.Windows.Forms.TextBox();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pboArticulo = new System.Windows.Forms.PictureBox();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pboArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPrecio
@@ -175,17 +178,37 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(106, 21);
+            this.label1.Location = new System.Drawing.Point(97, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 24);
             this.label1.TabIndex = 34;
             this.label1.Text = "Detalles";
             // 
+            // pboArticulo
+            // 
+            this.pboArticulo.Location = new System.Drawing.Point(263, 42);
+            this.pboArticulo.Name = "pboArticulo";
+            this.pboArticulo.Size = new System.Drawing.Size(200, 200);
+            this.pboArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pboArticulo.TabIndex = 35;
+            this.pboArticulo.TabStop = false;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Location = new System.Drawing.Point(211, 256);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.TabIndex = 36;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            // 
             // frmDetalles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 291);
+            this.ClientSize = new System.Drawing.Size(489, 291);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.pboArticulo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.txtCategoria);
@@ -206,6 +229,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmDetalles";
             this.Load += new System.EventHandler(this.frmDetalles_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pboArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +252,7 @@
         private System.Windows.Forms.TextBox txtCategoria;
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pboArticulo;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

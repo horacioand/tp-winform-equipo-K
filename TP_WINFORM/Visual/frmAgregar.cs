@@ -77,11 +77,10 @@ namespace Visual
                 articulo.CodigoArticulo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
-                articulo.Imagen = new List<Imagen>();
-                articulo.Imagen.Add(new Imagen());
-                articulo.Imagen[0].Ruta = txtImagen.Text;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
+                imagenNegocio.AgregarImg(articulo.Id, txtImagen.Text);
 
                 if (articulo.Id != 0)
                 {
@@ -92,7 +91,6 @@ namespace Visual
                 else
                 {
                     articuloNegocio.agregar(articulo);
-                    imagenNegocio.agregar(articulo);
                     MessageBox.Show("Agregado Exitosamente");
                 }
 

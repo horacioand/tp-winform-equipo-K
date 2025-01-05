@@ -22,31 +22,38 @@ namespace Negocio
                 {
                     Articulo auxiliar = new Articulo();
                     auxiliar.Id = (int)datos.Reader["Id"];
+
                     if (!(datos.Reader["Codigo"]is DBNull))
                         auxiliar.CodigoArticulo = (string)datos.Reader["Codigo"];
+
                     if (!(datos.Reader["Nombre"] is DBNull))
                         auxiliar.Nombre = (string)datos.Reader["Nombre"];
+
                     if (!(datos.Reader["Descripcion"] is DBNull))
                         auxiliar.Descripcion = (string)datos.Reader["Descripcion"];
 
                     auxiliar.Categoria = new Categoria();
                     if (!(datos.Reader["Categoria"] is DBNull))
-                    {
                         auxiliar.Categoria.Descripcion = (string)datos.Reader["Categoria"];
-                    }
+                    
+
                     if (!(datos.Reader["idCategoria"] is DBNull))
                         auxiliar.Categoria.Id = (int)datos.Reader["idCategoria"];
 
                         auxiliar.Marca = new Marca();
                     if (!(datos.Reader["Marca"] is DBNull))
-                    { 
                         auxiliar.Marca.Descripcion = (string)datos.Reader["Marca"];
-                    }
+                    
                     if (!(datos.Reader["idMarca"] is DBNull))
                         auxiliar.Marca.Id = (int)datos.Reader["idMarca"];
 
                     if (!(datos.Reader["Precio"] is DBNull))
                         auxiliar.Precio = (decimal)datos.Reader["Precio"];
+
+                    ImagenNegocio imagenNegocio = new ImagenNegocio();  
+                    List<Imagen> listaImagenes = imagenNegocio.listarImg(auxiliar.Id);
+                    auxiliar.Imagen = listaImagenes;
+
                     listaArticulos.Add(auxiliar);
                 }
                 return listaArticulos;
