@@ -13,6 +13,7 @@ namespace Visual
 {
     public partial class frmPrincipal : Form
     {
+        public List<Articulo> listaArticulos;
         public frmPrincipal()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace Visual
         public void cargar()
         {
             ArticuloNegocio conexionArticulo = new ArticuloNegocio();
-            List<Articulo> listaArticulos = conexionArticulo.listar();
+            listaArticulos = conexionArticulo.listar();
             dgvArticulos.DataSource = listaArticulos;
             dgvArticulos.Columns[0].Visible = false;
         }
@@ -79,6 +80,44 @@ namespace Visual
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmAgregar modificar = new frmAgregar(seleccionado);
             modificar.ShowDialog();
+            cargar();
+        }
+
+        private void txtFiltroRapido_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            string filtro = txtFiltroRapido.Text;
+            if (filtro.Length >= 2)
+            {
+                listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+
+            }
+            else
+            {
+                listaFiltrada = listaArticulos;
+            }
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaFiltrada;
+            
+        }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            lblSeleccionado.Text = seleccionado.Nombre;
+        }
+
+        private void button1_Click(object sender, EventArgs e)//filtro avanzado
+        {
+            frmFiltroAvanzado frmFiltroAvanzado = new frmFiltroAvanzado();
+            frmFiltroAvanzado.ShowDialog();
+            cargar();
+        }
+
+        private void tsmAgregarCatMar_Click(object sender, EventArgs e)
+        {
+            frmAgregarCatMar frmAgregarCatMar = new frmAgregarCatMar();
+            frmAgregarCatMar.ShowDialog();
             cargar();
         }
     }

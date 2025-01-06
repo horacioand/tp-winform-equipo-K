@@ -46,7 +46,34 @@ namespace Visual
             }
             return false;
         }
-
+        //hacer mas genericos los metodos de validacion y unificarlos o sobrecargar
+        public static bool validarFiltro(ComboBox campo, ComboBox criterio, TextBox filtro)
+        {
+            if (campo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione un campo a filtrar");
+                return true;
+            }
+            if (criterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione un criterio a filtrar");
+                return true;
+            }
+            if (campo.SelectedItem.ToString() == "Precio")
+            {
+                if (string.IsNullOrEmpty(filtro.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese un dato para filtrar por precio");
+                    return true;
+                }
+                if (!(soloNumeros(filtro.Text)))
+                {
+                    MessageBox.Show("Por favor, ingrese solo números para filtrar por precio");
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public static bool esDecimal(string texto)
         {

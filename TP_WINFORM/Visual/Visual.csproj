@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAgregarCatMar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarCatMar.Designer.cs">
+      <DependentUpon>frmAgregarCatMar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFiltroAvanzado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiltroAvanzado.Designer.cs">
+      <DependentUpon>frmFiltroAvanzado.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,8 +82,14 @@
     <EmbeddedResource Include="frmAgregar.resx">
       <DependentUpon>frmAgregar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarCatMar.resx">
+      <DependentUpon>frmAgregarCatMar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDetalles.resx">
       <DependentUpon>frmDetalles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFiltroAvanzado.resx">
+      <DependentUpon>frmFiltroAvanzado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

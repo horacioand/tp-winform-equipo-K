@@ -113,5 +113,6 @@ namespace Visual
         {
             Funciones.cargarImagen(pboArticulo, txtImagen.Text);
         }
+
     }
 }

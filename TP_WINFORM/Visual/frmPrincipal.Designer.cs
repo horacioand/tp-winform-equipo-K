@@ -35,16 +35,14 @@
             this.msMenu = new System.Windows.Forms.MenuStrip();
             this.tsmAgregar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAgregarArticulo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmAgregarCategoria = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmAgregarMarca = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmAgregarCatMar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmModificarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmModificarCategoria = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmModificarMarca = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEliminarArticulo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEliminarCategoria = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEliminarMarca = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblFiltroRapido = new System.Windows.Forms.Label();
+            this.txtFiltroRapido = new System.Windows.Forms.TextBox();
+            this.lblSeleccionado = new System.Windows.Forms.Label();
+            this.btnFiltro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.msMenu.SuspendLayout();
             this.SuspendLayout();
@@ -53,16 +51,17 @@
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulos.Location = new System.Drawing.Point(12, 30);
+            this.dgvArticulos.Location = new System.Drawing.Point(12, 50);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(686, 306);
+            this.dgvArticulos.Size = new System.Drawing.Size(686, 286);
             this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(623, 346);
+            this.btnCerrar.Location = new System.Drawing.Point(623, 341);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 1;
@@ -72,7 +71,7 @@
             // 
             // btnDetalles
             // 
-            this.btnDetalles.Location = new System.Drawing.Point(12, 346);
+            this.btnDetalles.Location = new System.Drawing.Point(100, 341);
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.Size = new System.Drawing.Size(75, 23);
             this.btnDetalles.TabIndex = 4;
@@ -82,7 +81,7 @@
             // 
             // btnEliminarArticuloFisico
             // 
-            this.btnEliminarArticuloFisico.Location = new System.Drawing.Point(93, 346);
+            this.btnEliminarArticuloFisico.Location = new System.Drawing.Point(181, 341);
             this.btnEliminarArticuloFisico.Name = "btnEliminarArticuloFisico";
             this.btnEliminarArticuloFisico.Size = new System.Drawing.Size(75, 23);
             this.btnEliminarArticuloFisico.TabIndex = 5;
@@ -95,8 +94,7 @@
             this.msMenu.BackColor = System.Drawing.Color.NavajoWhite;
             this.msMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmAgregar,
-            this.tsmModificar,
-            this.tsmEliminar});
+            this.tsmModificar});
             this.msMenu.Location = new System.Drawing.Point(0, 0);
             this.msMenu.Name = "msMenu";
             this.msMenu.Size = new System.Drawing.Size(710, 24);
@@ -108,13 +106,11 @@
             this.tsmAgregar.BackColor = System.Drawing.Color.Linen;
             this.tsmAgregar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmAgregarArticulo,
-            this.tsmAgregarCategoria,
-            this.tsmAgregarMarca});
+            this.tsmAgregarCatMar});
             this.tsmAgregar.Margin = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.tsmAgregar.Name = "tsmAgregar";
             this.tsmAgregar.Size = new System.Drawing.Size(61, 20);
             this.tsmAgregar.Text = "Agregar";
-
             // 
             // tsmAgregarArticulo
             // 
@@ -123,25 +119,19 @@
             this.tsmAgregarArticulo.Text = "Articulo";
             this.tsmAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
             // 
-            // tsmAgregarCategoria
+            // tsmAgregarCatMar
             // 
-            this.tsmAgregarCategoria.Name = "tsmAgregarCategoria";
-            this.tsmAgregarCategoria.Size = new System.Drawing.Size(180, 22);
-            this.tsmAgregarCategoria.Text = "Categoria";
-            // 
-            // tsmAgregarMarca
-            // 
-            this.tsmAgregarMarca.Name = "tsmAgregarMarca";
-            this.tsmAgregarMarca.Size = new System.Drawing.Size(180, 22);
-            this.tsmAgregarMarca.Text = "Marca";
+            this.tsmAgregarCatMar.Name = "tsmAgregarCatMar";
+            this.tsmAgregarCatMar.Size = new System.Drawing.Size(180, 22);
+            this.tsmAgregarCatMar.Text = "Categoria/Marca";
+            this.tsmAgregarCatMar.Click += new System.EventHandler(this.tsmAgregarCatMar_Click);
             // 
             // tsmModificar
             // 
             this.tsmModificar.BackColor = System.Drawing.Color.Linen;
             this.tsmModificar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmModificarArticulo,
-            this.tsmModificarCategoria,
-            this.tsmModificarMarca});
+            this.tsmModificarCategoria});
             this.tsmModificar.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.tsmModificar.Name = "tsmModificar";
             this.tsmModificar.Size = new System.Drawing.Size(70, 20);
@@ -158,52 +148,54 @@
             // 
             this.tsmModificarCategoria.Name = "tsmModificarCategoria";
             this.tsmModificarCategoria.Size = new System.Drawing.Size(180, 22);
-            this.tsmModificarCategoria.Text = "Categoria";
+            this.tsmModificarCategoria.Text = "Categoria/Marca";
             // 
-            // tsmModificarMarca
+            // lblFiltroRapido
             // 
-            this.tsmModificarMarca.Name = "tsmModificarMarca";
-            this.tsmModificarMarca.Size = new System.Drawing.Size(180, 22);
-            this.tsmModificarMarca.Text = "Marca";
+            this.lblFiltroRapido.AutoSize = true;
+            this.lblFiltroRapido.Location = new System.Drawing.Point(12, 30);
+            this.lblFiltroRapido.Name = "lblFiltroRapido";
+            this.lblFiltroRapido.Size = new System.Drawing.Size(43, 13);
+            this.lblFiltroRapido.TabIndex = 7;
+            this.lblFiltroRapido.Text = "Buscar:";
             // 
-            // tsmEliminar
+            // txtFiltroRapido
             // 
-            this.tsmEliminar.BackColor = System.Drawing.Color.Linen;
-            this.tsmEliminar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmEliminarArticulo,
-            this.tsmEliminarCategoria,
-            this.tsmEliminarMarca});
-            this.tsmEliminar.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.tsmEliminar.Name = "tsmEliminar";
-            this.tsmEliminar.Size = new System.Drawing.Size(62, 20);
-            this.tsmEliminar.Text = "Eliminar";
+            this.txtFiltroRapido.Location = new System.Drawing.Point(61, 27);
+            this.txtFiltroRapido.Name = "txtFiltroRapido";
+            this.txtFiltroRapido.Size = new System.Drawing.Size(225, 20);
+            this.txtFiltroRapido.TabIndex = 8;
+            this.txtFiltroRapido.TextChanged += new System.EventHandler(this.txtFiltroRapido_TextChanged);
             // 
-            // tsmEliminarArticulo
+            // lblSeleccionado
             // 
-            this.tsmEliminarArticulo.Name = "tsmEliminarArticulo";
-            this.tsmEliminarArticulo.Size = new System.Drawing.Size(180, 22);
-            this.tsmEliminarArticulo.Text = "Articulo";
-            this.tsmEliminarArticulo.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.lblSeleccionado.AutoSize = true;
+            this.lblSeleccionado.Location = new System.Drawing.Point(9, 346);
+            this.lblSeleccionado.Name = "lblSeleccionado";
+            this.lblSeleccionado.Size = new System.Drawing.Size(72, 13);
+            this.lblSeleccionado.TabIndex = 9;
+            this.lblSeleccionado.Text = "Seleccionado";
             // 
-            // tsmEliminarCategoria
+            // btnFiltro
             // 
-            this.tsmEliminarCategoria.Enabled = false;
-            this.tsmEliminarCategoria.Name = "tsmEliminarCategoria";
-            this.tsmEliminarCategoria.Size = new System.Drawing.Size(180, 22);
-            this.tsmEliminarCategoria.Text = "Categoria";
-            // 
-            // tsmEliminarMarca
-            // 
-            this.tsmEliminarMarca.Enabled = false;
-            this.tsmEliminarMarca.Name = "tsmEliminarMarca";
-            this.tsmEliminarMarca.Size = new System.Drawing.Size(180, 22);
-            this.tsmEliminarMarca.Text = "Marca";
+            this.btnFiltro.Location = new System.Drawing.Point(607, 24);
+            this.btnFiltro.Name = "btnFiltro";
+            this.btnFiltro.Size = new System.Drawing.Size(91, 23);
+            this.btnFiltro.TabIndex = 10;
+            this.btnFiltro.Text = "Filtro Avanzado";
+            this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 381);
+            this.BackColor = System.Drawing.Color.NavajoWhite;
+            this.ClientSize = new System.Drawing.Size(710, 369);
+            this.Controls.Add(this.btnFiltro);
+            this.Controls.Add(this.lblSeleccionado);
+            this.Controls.Add(this.txtFiltroRapido);
+            this.Controls.Add(this.lblFiltroRapido);
             this.Controls.Add(this.btnEliminarArticuloFisico);
             this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.btnCerrar);
@@ -231,16 +223,14 @@
         private System.Windows.Forms.MenuStrip msMenu;
         private System.Windows.Forms.ToolStripMenuItem tsmAgregar;
         private System.Windows.Forms.ToolStripMenuItem tsmAgregarArticulo;
-        private System.Windows.Forms.ToolStripMenuItem tsmAgregarCategoria;
-        private System.Windows.Forms.ToolStripMenuItem tsmAgregarMarca;
+        private System.Windows.Forms.ToolStripMenuItem tsmAgregarCatMar;
         private System.Windows.Forms.ToolStripMenuItem tsmModificar;
         private System.Windows.Forms.ToolStripMenuItem tsmModificarArticulo;
         private System.Windows.Forms.ToolStripMenuItem tsmModificarCategoria;
-        private System.Windows.Forms.ToolStripMenuItem tsmModificarMarca;
-        private System.Windows.Forms.ToolStripMenuItem tsmEliminar;
-        private System.Windows.Forms.ToolStripMenuItem tsmEliminarArticulo;
-        private System.Windows.Forms.ToolStripMenuItem tsmEliminarCategoria;
-        private System.Windows.Forms.ToolStripMenuItem tsmEliminarMarca;
+        private System.Windows.Forms.Label lblFiltroRapido;
+        private System.Windows.Forms.TextBox txtFiltroRapido;
+        private System.Windows.Forms.Label lblSeleccionado;
+        private System.Windows.Forms.Button btnFiltro;
     }
 }
 

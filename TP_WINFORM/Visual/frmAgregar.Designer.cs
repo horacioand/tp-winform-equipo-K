@@ -144,6 +144,7 @@
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(142, 20);
             this.txtImagen.TabIndex = 10;
+
             this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
             // cboCategoria

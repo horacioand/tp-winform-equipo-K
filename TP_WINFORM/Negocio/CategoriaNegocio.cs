@@ -16,7 +16,7 @@ namespace Negocio
             {
                 datos.setearConsulta("SELECT Id, Descripcion FROM CATEGORIAS");
                 datos.ejecutarLectura();
-                while (datos.Reader.Read()) 
+                while (datos.Reader.Read())
                 {
                     Categoria auxiliar = new Categoria();
                     if (!(datos.Reader["Id"] is DBNull))
@@ -31,6 +31,23 @@ namespace Negocio
             {
 
                 throw ex;
+            }
+        }
+        public void agregar(string nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO CATEGORIAS (Descripcion) VALUES ('" + nuevo + "')");
+                datos.ejecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }
