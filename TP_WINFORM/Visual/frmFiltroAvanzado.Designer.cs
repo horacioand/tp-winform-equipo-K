@@ -116,9 +116,9 @@
             // dgvFiltroAvanzado
             // 
             this.dgvFiltroAvanzado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFiltroAvanzado.Location = new System.Drawing.Point(216, 12);
+            this.dgvFiltroAvanzado.Location = new System.Drawing.Point(211, 12);
             this.dgvFiltroAvanzado.Name = "dgvFiltroAvanzado";
-            this.dgvFiltroAvanzado.Size = new System.Drawing.Size(550, 196);
+            this.dgvFiltroAvanzado.Size = new System.Drawing.Size(490, 196);
             this.dgvFiltroAvanzado.TabIndex = 8;
             // 
             // frmFiltroAvanzado
@@ -126,7 +126,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(778, 220);
+            this.ClientSize = new System.Drawing.Size(713, 220);
             this.Controls.Add(this.dgvFiltroAvanzado);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnFiltrar);
@@ -136,8 +136,12 @@
             this.Controls.Add(this.lblFiltro);
             this.Controls.Add(this.lblCriterio);
             this.Controls.Add(this.lblCampo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmFiltroAvanzado";
-            this.Text = "frmFiltroAvanzado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Filtro de Artículos ";
             this.Load += new System.EventHandler(this.frmFiltroAvanzado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFiltroAvanzado)).EndInit();
             this.ResumeLayout(false);

@@ -120,5 +120,12 @@ namespace Visual
             frmAgregarCatMar.ShowDialog();
             cargar();
         }
+
+        private void tsmModificarCategoria_Click(object sender, EventArgs e)
+        {
+            frmEditarCatMar frmEditarCatMar = new frmEditarCatMar();
+            frmEditarCatMar.ShowDialog();
+            cargar();
+        }
     }
 }

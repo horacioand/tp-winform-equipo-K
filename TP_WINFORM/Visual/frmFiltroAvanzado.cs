@@ -37,12 +37,18 @@ namespace Visual
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
-                Funciones.validarFiltro(cboCampo,cboCriterio,txtFiltro);
+                if (Funciones.validarFiltro(cboCampo,cboCriterio,txtFiltro))
+                {
+                    return;
+                }
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltro.Text;
+                dgvFiltroAvanzado.DataSource = articuloNegocio.filtrarArticulo(campo, criterio, filtro);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.ToString());
             }
         }
 

@@ -52,6 +52,12 @@
     <Compile Include="frmAgregarCatMar.Designer.cs">
       <DependentUpon>frmAgregarCatMar.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditarCatMar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditarCatMar.Designer.cs">
+      <DependentUpon>frmEditarCatMar.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFiltroAvanzado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalles.resx">
       <DependentUpon>frmDetalles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarCatMar.resx">
+      <DependentUpon>frmEditarCatMar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFiltroAvanzado.resx">
       <DependentUpon>frmFiltroAvanzado.cs</DependentUpon>

@@ -71,7 +71,7 @@
             // 
             // btnDetalles
             // 
-            this.btnDetalles.Location = new System.Drawing.Point(100, 341);
+            this.btnDetalles.Location = new System.Drawing.Point(12, 342);
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.Size = new System.Drawing.Size(75, 23);
             this.btnDetalles.TabIndex = 4;
@@ -81,7 +81,7 @@
             // 
             // btnEliminarArticuloFisico
             // 
-            this.btnEliminarArticuloFisico.Location = new System.Drawing.Point(181, 341);
+            this.btnEliminarArticuloFisico.Location = new System.Drawing.Point(93, 342);
             this.btnEliminarArticuloFisico.Name = "btnEliminarArticuloFisico";
             this.btnEliminarArticuloFisico.Size = new System.Drawing.Size(75, 23);
             this.btnEliminarArticuloFisico.TabIndex = 5;
@@ -149,6 +149,7 @@
             this.tsmModificarCategoria.Name = "tsmModificarCategoria";
             this.tsmModificarCategoria.Size = new System.Drawing.Size(180, 22);
             this.tsmModificarCategoria.Text = "Categoria/Marca";
+            this.tsmModificarCategoria.Click += new System.EventHandler(this.tsmModificarCategoria_Click);
             // 
             // lblFiltroRapido
             // 
@@ -170,7 +171,7 @@
             // lblSeleccionado
             // 
             this.lblSeleccionado.AutoSize = true;
-            this.lblSeleccionado.Location = new System.Drawing.Point(9, 346);
+            this.lblSeleccionado.Location = new System.Drawing.Point(174, 347);
             this.lblSeleccionado.Name = "lblSeleccionado";
             this.lblSeleccionado.Size = new System.Drawing.Size(72, 13);
             this.lblSeleccionado.TabIndex = 9;
