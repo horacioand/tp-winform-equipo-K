@@ -45,6 +45,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pboArticulo = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pboArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +71,7 @@
             // txtImagen
             // 
             this.txtImagen.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtImagen.Enabled = false;
             this.txtImagen.Location = new System.Drawing.Point(101, 144);
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.ReadOnly = true;
@@ -195,18 +198,42 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(211, 256);
+            this.btnCerrar.Location = new System.Drawing.Point(106, 256);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 36;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Location = new System.Drawing.Point(368, 248);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(23, 23);
+            this.btnSiguiente.TabIndex = 37;
+            this.btnSiguiente.Text = ">";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Location = new System.Drawing.Point(339, 248);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(23, 23);
+            this.btnAnterior.TabIndex = 38;
+            this.btnAnterior.Text = "<";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
             // frmDetalles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(489, 291);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.pboArticulo);
             this.Controls.Add(this.label1);
@@ -254,5 +281,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pboArticulo;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Button btnAnterior;
     }
 }

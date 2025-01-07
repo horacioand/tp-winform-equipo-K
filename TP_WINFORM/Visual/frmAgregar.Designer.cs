@@ -46,6 +46,11 @@
             this.pboArticulo = new System.Windows.Forms.PictureBox();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.lblEliminarImgX = new System.Windows.Forms.Label();
+            this.lblEliminarImg = new System.Windows.Forms.Label();
+            this.btnAgregarImg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pboArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,7 +103,7 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(43, 153);
+            this.lblCategoria.Location = new System.Drawing.Point(43, 173);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(57, 13);
             this.lblCategoria.TabIndex = 5;
@@ -107,7 +112,7 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(60, 180);
+            this.lblMarca.Location = new System.Drawing.Point(60, 200);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(40, 13);
             this.lblMarca.TabIndex = 6;
@@ -144,14 +149,13 @@
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(142, 20);
             this.txtImagen.TabIndex = 10;
-
             this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
             // cboCategoria
             // 
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(106, 150);
+            this.cboCategoria.Location = new System.Drawing.Point(106, 170);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(142, 21);
             this.cboCategoria.TabIndex = 11;
@@ -160,14 +164,14 @@
             // 
             this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(106, 177);
+            this.cboMarca.Location = new System.Drawing.Point(106, 197);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(142, 21);
             this.cboMarca.TabIndex = 12;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(89, 267);
+            this.btnAgregar.Location = new System.Drawing.Point(79, 253);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 13;
@@ -177,7 +181,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(170, 267);
+            this.btnCancelar.Location = new System.Drawing.Point(160, 253);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 14;
@@ -197,7 +201,7 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(57, 205);
+            this.lblPrecio.Location = new System.Drawing.Point(57, 225);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(40, 13);
             this.lblPrecio.TabIndex = 16;
@@ -206,16 +210,74 @@
             // txtPrecio
             // 
             this.txtPrecio.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtPrecio.Location = new System.Drawing.Point(106, 204);
+            this.txtPrecio.Location = new System.Drawing.Point(106, 224);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(142, 20);
             this.txtPrecio.TabIndex = 17;
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Location = new System.Drawing.Point(408, 253);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(61, 23);
+            this.btnSiguiente.TabIndex = 18;
+            this.btnSiguiente.Text = "Siguiente";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Location = new System.Drawing.Point(341, 253);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(61, 24);
+            this.btnAnterior.TabIndex = 19;
+            this.btnAnterior.Text = "Anterior";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // lblEliminarImgX
+            // 
+            this.lblEliminarImgX.AutoSize = true;
+            this.lblEliminarImgX.BackColor = System.Drawing.Color.Transparent;
+            this.lblEliminarImgX.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEliminarImgX.ForeColor = System.Drawing.Color.Red;
+            this.lblEliminarImgX.Location = new System.Drawing.Point(478, 47);
+            this.lblEliminarImgX.Name = "lblEliminarImgX";
+            this.lblEliminarImgX.Size = new System.Drawing.Size(21, 20);
+            this.lblEliminarImgX.TabIndex = 20;
+            this.lblEliminarImgX.Text = "X";
+            this.lblEliminarImgX.Click += new System.EventHandler(this.lblEliminarImgX_Click);
+            // 
+            // lblEliminarImg
+            // 
+            this.lblEliminarImg.AutoSize = true;
+            this.lblEliminarImg.Location = new System.Drawing.Point(418, 31);
+            this.lblEliminarImg.Name = "lblEliminarImg";
+            this.lblEliminarImg.Size = new System.Drawing.Size(81, 13);
+            this.lblEliminarImg.TabIndex = 21;
+            this.lblEliminarImg.Text = "Eliminar Imagen";
+            // 
+            // btnAgregarImg
+            // 
+            this.btnAgregarImg.Location = new System.Drawing.Point(190, 145);
+            this.btnAgregarImg.Name = "btnAgregarImg";
+            this.btnAgregarImg.Size = new System.Drawing.Size(58, 23);
+            this.btnAgregarImg.TabIndex = 22;
+            this.btnAgregarImg.Text = "Agregar";
+            this.btnAgregarImg.UseVisualStyleBackColor = true;
+            this.btnAgregarImg.Click += new System.EventHandler(this.btnAgregarImg_Click);
             // 
             // frmAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 302);
+            this.BackColor = System.Drawing.Color.NavajoWhite;
+            this.ClientSize = new System.Drawing.Size(542, 287);
+            this.Controls.Add(this.btnAgregarImg);
+            this.Controls.Add(this.lblEliminarImg);
+            this.Controls.Add(this.lblEliminarImgX);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.pboArticulo);
@@ -265,5 +327,10 @@
         private System.Windows.Forms.PictureBox pboArticulo;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Label lblEliminarImgX;
+        private System.Windows.Forms.Label lblEliminarImg;
+        private System.Windows.Forms.Button btnAgregarImg;
     }
 }
