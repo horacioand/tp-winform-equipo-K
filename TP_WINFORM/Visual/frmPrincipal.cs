@@ -98,11 +98,15 @@ namespace Visual
             }
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
-            
+            dgvArticulos.Columns[0].Visible = false;
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
+            if(dgvArticulos.CurrentRow == null)
+            {
+                return;
+            }
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             lblSeleccionado.Text = seleccionado.Nombre;
         }
