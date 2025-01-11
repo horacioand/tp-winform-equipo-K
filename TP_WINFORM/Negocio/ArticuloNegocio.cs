@@ -136,7 +136,12 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Id AS idMarca, M.Descripcion AS Marca, c.Id AS idCategoria, C.Descripcion AS Categoria, Precio FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE IdMarca = M.Id AND IdCategoria = C.Id AND ";
+                string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Id AS idMarca, M.Descripcion AS Marca, " +
+                          "C.Id AS idCategoria, C.Descripcion AS Categoria, Precio " +
+                          "FROM ARTICULOS A " +
+                          "LEFT JOIN MARCAS M ON A.IdMarca = M.Id " +
+                          "LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id WHERE ";
+                //string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Id AS idMarca, M.Descripcion AS Marca, c.Id AS idCategoria, C.Descripcion AS Categoria, Precio FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE IdMarca = M.Id AND IdCategoria = C.Id AND ";
                 if (campo == "Precio")
                 {
                     if (string.IsNullOrEmpty(filtro))
@@ -249,16 +254,39 @@ namespace Negocio
                     
                     if (!(datos.Reader["Precio"] is DBNull))
                         auxiliar.Precio = (decimal)datos.Reader["Precio"];
+
                     auxiliar.Marca = new Marca();
                     if (!(datos.Reader["idMarca"] is DBNull))
                         auxiliar.Marca.Id = (int)datos.Reader["idMarca"];
+                    else
+                    {
+                        auxiliar.Marca.Id = 0;
+                    }
                     if (!(datos.Reader["Marca"] is DBNull))
                         auxiliar.Marca.Descripcion = (string)datos.Reader["Marca"];
+                    else
+                    {
+                        auxiliar.Marca.Descripcion = "Sin Asignar";
+                    }
+
                     auxiliar.Categoria = new Categoria();
                     if (!(datos.Reader["idCategoria"] is DBNull))
+                    {
                         auxiliar.Categoria.Id = (int)datos.Reader["idCategoria"];
+                    }    
+                    else
+                    {
+                        auxiliar.Categoria.Id = 0;
+                    }
                     if (!(datos.Reader["Categoria"] is DBNull))
+                    {
                         auxiliar.Categoria.Descripcion = (string)datos.Reader["Categoria"];
+                    }
+                    else
+                    {
+                        auxiliar.Categoria.Descripcion = "Sin Asignar";
+                    }
+                        
                     listaArticulos.Add(auxiliar);
                 }
                 return listaArticulos;
